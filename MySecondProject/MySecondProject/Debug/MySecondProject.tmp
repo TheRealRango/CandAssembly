@@ -1,0 +1,27 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16"</DEVICE>
+ <WORKING_DIR>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\MySecondProject\MySecondProject\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\MySecondProject\MySecondProject\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\MySecondProject\MySecondProject\Debug\MySecondProject.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>MySecondProject.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>MySecondProject.map</FILE>
+  <FILE>MySecondProject.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <start><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\MySecondProject\MySecondProject\main.asm</FILE><LINE>21</LINE></start>
+ </LABELS>
+</ASSEMBLER_INFO>

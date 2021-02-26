@@ -6,6 +6,7 @@
 ;
 
 ldi r16, 0b00000111
+ldi r22, 0x15
 
 ; Replace with your application code
 start:
