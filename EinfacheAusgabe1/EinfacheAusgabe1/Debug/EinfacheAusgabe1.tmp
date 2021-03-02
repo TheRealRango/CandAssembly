@@ -23,7 +23,7 @@
  </OUTPUT_FILES>
  <LABELS>
   <init><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\EinfacheAusgabe1\main.asm</FILE><LINE>21</LINE></init>
-  <main><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\EinfacheAusgabe1\main.asm</FILE><LINE>31</LINE></main>
-  <ende><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\EinfacheAusgabe1\main.asm</FILE><LINE>36</LINE></ende>
+  <main><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\EinfacheAusgabe1\main.asm</FILE><LINE>34</LINE></main>
+  <ende><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\EinfacheAusgabe1\main.asm</FILE><LINE>39</LINE></ende>
  </LABELS>
 </ASSEMBLER_INFO>
