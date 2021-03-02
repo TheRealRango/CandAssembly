@@ -20,17 +20,20 @@
 
 init:					; Sprungmarke/Label
 						; Port A als Ausgang
-ldi R16, 0xff			; Assemblerbefehl „load immediate“
-						; Register R16 mit dem Wert 0xff laden
-out DDRA, R16			; Assemblerbefehl „out“:
-						; Inhalt von R16 wird nach I/O-Register DDRA ausgegeben
+;ldi R16, 0xff			;Register R16 mit dem Wert 0xff laden Assemblerbefehl „load immediate“
+ldi R16, 0x81			; beschreibe R17 mit 81 --> 10000001
+ldi R17, 0xff			; beschreibe R17 mit FF --> 11111111 
+						
+out DDRA, R16			; beschreibe DDRA mit inhalt von R16 Assemblerbefehl „out“ Inhalt von R16 wird nach I/O-Register DDRA ausgegeben
+out PORTA, R17			;beschreibe PORTA mit inhalt von R17 
+						; 
 						; DDR-Register: Information, ob Aus- oder Eingang
-;====Hauptprogramm====
+;====Hauptprogramm====  
 main:
 sbi PORTA, 0			; Assemblerbefehl „set bit in I/O-Register“
 						; Register PORTA – PA0 auf 1 setzen
 						; Achtung: Befehl funktioniert nur mit den ersten 32
 						; I/O-Registern
 ende:
-jmp ende				; Endlosschleife
+	jmp ende			; Endlosschleife
 						
