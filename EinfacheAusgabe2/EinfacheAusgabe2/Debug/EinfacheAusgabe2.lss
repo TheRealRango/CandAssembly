@@ -1,10 +1,8 @@
 
-AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\EinfacheAusgabe1\main.asm Fri Mar 05 14:04:26 2021
+AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe2\EinfacheAusgabe2\main.asm Fri Mar 05 15:03:40 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
-C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\EinfacheAusgabe1\main.asm(14): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
-[builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
-C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\EinfacheAusgabe1\main.asm(14): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
+C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe2\EinfacheAusgabe2\main.asm(8): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
                                  
                                  ;
                                  
@@ -872,17 +870,11 @@ C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\Einfa
                                  #endif  /* _M16DEF_INC_ */
                                  
                                  
-                                 ; EinfacheAusgabe1.asm
+                                 ; EinfacheAusgabe2.asm
                                  ;
-                                 ; Created: 02/03/2021 13:44:24
+                                 ; Created: 05/03/2021 14:43:51
                                  ; Author : lorenz
                                  ;
-                                 
-                                 ;==== Beschreibung des Programms====
-                                 ; Nach Start des Programms soll eine LED leuchten.
-                                 ; LED an PA0
-                                 
-                                 ;====Beginn des Programms====
                                  
                                  .INCLUDE "m16def.inc"	; Assembleranweisung: Definitionsdatei für ATmega16
                                  
@@ -934,27 +926,34 @@ C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe1\Einfa
                                  						; .DEF PORTA = 0x1b (Speicheradresse)
                                  ;==== Initialisierung====
                                  
-                                 init:					; Sprungmarke/Label
-                                 						; Port A als Ausgang
-                                 ;ldi R16, 0xff			;Register R16 mit dem Wert 0xff laden Assemblerbefehl „load immediate“
-000000 e801                      ldi R16, 0x81			; beschreibe R16 mit 81 --> 10000001
-000001 ef2f                      ldi R18, 0xff			; beschreibe R18 mit FF --> 11111111 
+                                 
+                                 ; Replace with your application code
+                                 start:
+                                   
+                                 ;a)
+000000 e04e                      ldi R20, 0x0e
+000001 2e14                      mov R1, R20
+                                 ;b)
+000002 e011                      ldi R17, 0b00000001
+                                 ;c)
+000003 e024                      ldi R18, 4
+                                 ;d)
+000004 e830                      ldi R19, 0b10000000
+                                 ;e)
+000005 2f20                      mov R18, R16
+000006 2f21                      mov R18, R17
+                                 ;f
+000007 ef4f                      ldi R20, 0xff
+000008 bb4a                      out DDRA, R20
+000009 bb2b                      out PORTA, R18
+                                 ;g)
+                                 ;ende:
+                                 ; jmp ende
+                                 ;h)
+                                 
+                                 ;i)
                                  
                                  
-                                 					
-000002 bb2a                      out DDRA, R18			; beschreibe DDRA mit inhalt von R16 Assemblerbefehl „out“ Inhalt von R16 wird nach I/O-Register DDRA ausgegeben
-000003 bb2b                      out PORTA, R18			;beschreibe PORTA mit inhalt von R18 
-                                 						; 
-                                 						; DDR-Register: Information, ob Aus- oder Eingang
-                                 ;====Hauptprogramm====  
-                                 main:
-000004 9ad8                      sbi PORTA, 0			; Assemblerbefehl „set bit in I/O-Register“
-                                 						; Register PORTA – PA0 auf 1 setzen
-                                 						; Achtung: Befehl funktioniert nur mit den ersten 32
-                                 						; I/O-Registern
-                                 ende:
-000005 940c 0005                 	jmp ende			; Endlosschleife
-                                 						
 
 
 RESOURCE USE INFORMATION
@@ -972,12 +971,12 @@ counted separately from r26..r31 here.
 .dseg memory usage only counts static data declared with .byte
 
 "ATmega16" register use summary:
-x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
+x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   1 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   1 r17:   0 r18:   3 r19:   0 r20:   0 
+r13:   0 r14:   0 r15:   0 r16:   1 r17:   2 r18:   4 r19:   1 r20:   4 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 2 out of 35 (5.7%)
+Registers used: 6 out of 35 (17.1%)
 
 "ATmega16" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
@@ -989,22 +988,22 @@ brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   1 
-ld    :   0 ldd   :   0 ldi   :   2 lds   :   0 lpm   :   0 lsl   :   0 
-lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   0 
+ld    :   0 ldd   :   0 ldi   :   5 lds   :   0 lpm   :   0 lsl   :   0 
+lsr   :   0 mov   :   3 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
 neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   2 pop   :   0 
 push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   0 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   1 sbic  :   0 sbis  :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 4 out of 113 (3.5%)
+Instructions used: 3 out of 113 (2.7%)
 
 "ATmega16" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x00000e     14      0     14   16384   0.1%
+[.cseg] 0x000000 0x000014     20      0     20   16384   0.1%
 [.dseg] 0x000060 0x000060      0      0      0    1024   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 
