@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\EinfacheAusgabe2\EinfacheAusgabe2\main.asm Fri Mar 12 14:20:55 2021
+AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210312_EinfacheAusgabe3\20210312_EinfacheAusgabe3\main.asm Fri Mar 12 15:01:06 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -604,4 +604,4 @@ EQU  INT2addr     00000024
 EQU  OC0addr      00000026
 EQU  SPMRaddr     00000028
 EQU  INT_VECTORS_SIZE 0000002a
-CSEG start        00000000
+CSEG start        00000003
