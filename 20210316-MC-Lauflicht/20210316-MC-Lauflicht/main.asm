@@ -32,16 +32,16 @@ loop:
     
     
     
-      start:
-    ldi R24, 0xff
-    out DDRA, R24
-init:
-    ldi R16, 0b00000001
-    
-loop:
-    cpi R16, 0b00000000
-    breq init
-    out PORTA, R16
-    add R16, R16
-    
-    jmp loop
+;      start:
+;    ldi R24, 0xff
+;   out DDRA, R24
+;init:
+;    ldi R16, 0b00000001
+;    
+;loop:
+;    cpi R16, 0b00000000
+;    breq init
+;    out PORTA, R16
+;    add R16, R16
+;    
+;    jmp loop
