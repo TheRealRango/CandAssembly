@@ -1,0 +1,30 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16"</DEVICE>
+ <WORKING_DIR>c:\users\loren\Documents\Atmel Studio\7.0\20210430-MC-UnterprogrammOS\20210430-MC-UnterprogrammOS\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>c:\users\loren\Documents\Atmel Studio\7.0\20210430-MC-UnterprogrammOS\20210430-MC-UnterprogrammOS\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>c:\users\loren\Documents\Atmel Studio\7.0\20210430-MC-UnterprogrammOS\20210430-MC-UnterprogrammOS\Debug\20210430-MC-UnterprogrammOS.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>20210430-MC-UnterprogrammOS.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>20210430-MC-UnterprogrammOS.map</FILE>
+  <FILE>20210430-MC-UnterprogrammOS.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <initialisierung><FILE>c:\users\loren\Documents\Atmel Studio\7.0\20210430-MC-UnterprogrammOS\20210430-MC-UnterprogrammOS\main.asm</FILE><LINE>10</LINE></initialisierung>
+  <Hauptprogramm><FILE>c:\users\loren\Documents\Atmel Studio\7.0\20210430-MC-UnterprogrammOS\20210430-MC-UnterprogrammOS\main.asm</FILE><LINE>17</LINE></Hauptprogramm>
+  <wait16cycles><FILE>c:\users\loren\Documents\Atmel Studio\7.0\20210430-MC-UnterprogrammOS\20210430-MC-UnterprogrammOS\main.asm</FILE><LINE>25</LINE></wait16cycles>
+  <schleifenkopf><FILE>c:\users\loren\Documents\Atmel Studio\7.0\20210430-MC-UnterprogrammOS\20210430-MC-UnterprogrammOS\main.asm</FILE><LINE>27</LINE></schleifenkopf>
+ </LABELS>
+</ASSEMBLER_INFO>
