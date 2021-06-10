@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210518-MC-AufgabeVerzweigung\20210518-MC-AufgabeVerzweigung\main.asm Fri May 21 11:43:34 2021
+AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210521 - MC - Moodle Verzweigungen2\20210521 - MC - Moodle Verzweigungen2\main.asm Fri May 21 13:18:23 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
@@ -870,48 +870,55 @@ AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\202
                                  #endif  /* _M16DEF_INC_ */
                                  
                                  
-                                 ; 20210518-MC-AufgabeVerzweigung.asm
+                                 ; 20210521 - MC - Moodle Verzweigungen2.asm
                                  ;
-                                 ; Created: 18/05/2021 14:37:25
+                                 ; Created: 21/05/2021 12:42:02
                                  ; Author : lorenz
                                  ;
                                  
                                  
                                  ; Replace with your application code
-                                 initialisierung:
-000000 ef0f                      	ldi r16, 0xff
-000001 bb07                      	out DDRB,R16
-                                 
-000002 e010                      	ldi r17, 0x00
-000003 bb1a                      	out DDRA, R17
-000004 bf10                      	out SFIOR,R17
-                                 
-                                 ;Sensorwert setzen:
-000005 b329                      	in r18, PINA
-                                 
+                                 start:
+000000 ef3f                      	ldi R19, 0xff
+000001 bb37                      	out DDRB, R19
+                                 ;Sensorwert lesen:
+                                 	;in r16, PINA
+000002 ec0f                      	ldi R16, 0b11001111 ;zum testen
                                  ;Maskierung
-000006 702f                      	andi r18,0x0f
-000007 2f32                      	mov R19,R18
-                                 
-000008 b329                      	in r18, PINA
-000009 7f20                      	andi r18, 0xf0
+                                 	
+000003 2f10                      	mov R17,R16
+000004 700f                      	andi r16,0x0f ;Sensorwert 1 maskiert
+                                 	
+000005 7f10                      	andi r17, 0xf0 ;Sensorwert 2 maskiert
                                  ;vorderer und hinterer Teil tauschen
-00000a 9522                      	swap r18
-00000b 2f42                      	mov r20,r18
-                                 ;addition und Ausgabe
-00000c 1b43                      	sub R20, R19
-                                 	
-00000d f021                      	brbs 1,LEDein
-                                 	LEDaus:;
-00000e e020                      		ldi R18, 0x00;
-00000f bb28                      		out PORTB, R18;
-000010 940c 0014                 	jmp Ende
-                                 	LEDein:
-000012 e021                      		ldi R18, 0x01;
-000013 bb28                      		out PORTB, R18;
-                                 	Ende:
+000006 9512                      	swap r17
+                                 ;addition
+000007 0f40                      	add r20,r16
+000008 0f41                      	add r20,r17 ;addieren von r16 und r17
+                                 	;mov r18,r20 ;ergebnis von r16 nach r18 kopieren
+000009 bb48                      	out PORTB,r20
+                                 ;vergleich für Auswertung
+00000a 1b01                      	sub r16,r17
                                  	
                                  
+                                 	
+                                 ;auswertung
+00000b f021                      	breq istgleich
+00000c f032                      	brbs 2, s1kleiner
+                                 	;brbc 2, s1groesser
+00000d 9ac7                      	sbi PORTB,7
+00000e 940c 0016                 	jmp ende
+                                 	istgleich:
+000010 9ac6                      	sbi PORTB,6
+000011 940c 0016                 	jmp ende
+                                 
+                                 	s1kleiner:
+000013 9ac5                      	sbi PORTB,5
+000014 940c 0016                 	jmp ende
+                                 
+                                 	;s1groesser:
+                                 	
+                                 	
                                  
 
 
@@ -932,37 +939,37 @@ counted separately from r26..r31 here.
 "ATmega16" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   2 r17:   3 r18:  11 r19:   2 r20:   2 
+r13:   0 r14:   0 r15:   0 r16:   5 r17:   5 r18:   0 r19:   2 r20:   3 
 r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 5 out of 35 (14.3%)
+Registers used: 4 out of 35 (11.4%)
 
 "ATmega16" instruction use summary:
-.lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
+.lds  :   0 .sts  :   0 adc   :   0 add   :   2 adiw  :   0 and   :   0 
 andi  :   2 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   1 
-brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :   1 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
 brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
 cpi   :   0 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   2 inc   :   0 jmp   :   1 
-ld    :   0 ldd   :   0 ldi   :   4 lds   :   0 lpm   :   0 lsl   :   0 
-lsr   :   0 mov   :   2 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   5 pop   :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   3 
+ld    :   0 ldd   :   0 ldi   :   2 lds   :   0 lpm   :   0 lsl   :   0 
+lsr   :   0 mov   :   1 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   2 pop   :   0 
 push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   0 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   3 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   1 subi  :   0 swap  :   1 tst   :   0 wdr   :   0 
-Instructions used: 9 out of 113 (8.0%)
+Instructions used: 11 out of 113 (9.7%)
 
 "ATmega16" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000028     40      0     40   16384   0.2%
+[.cseg] 0x000000 0x00002c     44      0     44   16384   0.3%
 [.dseg] 0x000060 0x000060      0      0      0    1024   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

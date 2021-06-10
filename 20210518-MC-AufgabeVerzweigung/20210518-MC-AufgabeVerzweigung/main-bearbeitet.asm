@@ -16,13 +16,13 @@ initialisierung:
 	out SFIOR,R17
 
 ;Sensorwert setzen:
-	ldi r18, 0b01010101
+	in r18, PINA
 
 ;Maskierung
 	andi r18,0x0f
 	mov R19,R18
 
-	ldi r18, 0b01010101
+	in r18, PINA
 	andi r18, 0xf0
 ;vorderer und hinterer Teil tauschen
 	swap r18

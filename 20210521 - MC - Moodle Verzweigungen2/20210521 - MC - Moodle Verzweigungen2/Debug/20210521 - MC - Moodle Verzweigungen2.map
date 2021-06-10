@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210518-MC-AufgabeVerzweigung\20210518-MC-AufgabeVerzweigung\main.asm Fri May 21 11:43:34 2021
+AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210521 - MC - Moodle Verzweigungen2\20210521 - MC - Moodle Verzweigungen2\main.asm Fri May 21 13:18:23 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -604,7 +604,7 @@ EQU  INT2addr     00000024
 EQU  OC0addr      00000026
 EQU  SPMRaddr     00000028
 EQU  INT_VECTORS_SIZE 0000002a
-CSEG initialisierung 00000000
-CSEG LEDein       00000012
-CSEG LEDaus       0000000e
-CSEG Ende         00000014
+CSEG start        00000000
+CSEG istgleich    00000010
+CSEG s1kleiner    00000013
+CSEG ende         00000016
