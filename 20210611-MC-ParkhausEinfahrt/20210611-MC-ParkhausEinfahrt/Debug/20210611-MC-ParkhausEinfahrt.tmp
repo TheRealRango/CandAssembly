@@ -1,0 +1,30 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16"</DEVICE>
+ <WORKING_DIR>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210611-MC-ParkhausEinfahrt\20210611-MC-ParkhausEinfahrt\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210611-MC-ParkhausEinfahrt\20210611-MC-ParkhausEinfahrt\main.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210611-MC-ParkhausEinfahrt\20210611-MC-ParkhausEinfahrt\Debug\20210611-MC-ParkhausEinfahrt.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>20210611-MC-ParkhausEinfahrt.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>20210611-MC-ParkhausEinfahrt.map</FILE>
+  <FILE>20210611-MC-ParkhausEinfahrt.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <init><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210611-MC-ParkhausEinfahrt\20210611-MC-ParkhausEinfahrt\main.asm</FILE><LINE>12</LINE></init>
+  <main><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210611-MC-ParkhausEinfahrt\20210611-MC-ParkhausEinfahrt\main.asm</FILE><LINE>16</LINE></main>
+  <count_car><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210611-MC-ParkhausEinfahrt\20210611-MC-ParkhausEinfahrt\main.asm</FILE><LINE>23</LINE></count_car>
+  <loop><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210611-MC-ParkhausEinfahrt\20210611-MC-ParkhausEinfahrt\main.asm</FILE><LINE>26</LINE></loop>
+ </LABELS>
+</ASSEMBLER_INFO>

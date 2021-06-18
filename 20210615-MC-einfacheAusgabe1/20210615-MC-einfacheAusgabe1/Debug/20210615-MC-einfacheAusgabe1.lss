@@ -1,10 +1,14 @@
 
-AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210316-MC-Lauflicht\20210316-MC-Lauflicht\main.asm Tue Jun 15 14:05:25 2021
+AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm Tue Jun 15 14:55:53 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
+C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
+C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm(147): Including file 'C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\Delay100msTimesR25.asm'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
+C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm(1): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
+C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm(147): Including file 'C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\Delay100msTimesR25.asm'
                                  
-                                 ;
+                                 .INCLUDE "m16def.inc"
                                  
                                  ;***** Created: 2011-02-09 12:03 ******* Source: ATmega16.xml ************
                                  ;*************************************************************************
@@ -870,51 +874,236 @@ AVRASM ver. 2.2.8  C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\202
                                  #endif  /* _M16DEF_INC_ */
                                  
                                  
-                                 ; 20210316-MC-Lauflicht.asm
-                                 ;
-                                 ; Created: 16/03/2021 14:44:26
-                                 ; Author : lorenz
-                                 ;
                                  
-                                 start:
-000000 ef8f                          ldi R24, 0xff
-000001 bb8a                          out DDRA, R24
-000002 e001                          ldi R16, 0b00000001
-000003 e012                          ldi R17, 0b00000010
-000004 e024                          ldi R18, 0b00000100
-000005 e038                          ldi R19, 0b00001000
-000006 e140                          ldi R20, 0b00010000 
-000007 e250                          ldi R21, 0b00100000
-000008 e460                          ldi R22, 0b01000000
-000009 e870                          ldi R23, 0b10000000 
-                                 loop:
-00000a bb0b                          out PORTA, R16
-00000b bb1b                          out PORTA, R17
-00000c bb2b                          out PORTA, R18
-00000d bb3b                          out PORTA, R19
-00000e bb4b                          out PORTA, R20
-00000f bb5b                          out PORTA, R21
-000010 bb6b                          out PORTA, R22
-000011 bb7b                          out PORTA, R23
-                                     
-000012 940c 000a                     jmp loop
+                                 ;***** Created: 2011-02-09 12:03 ******* Source: ATmega16.xml ************
+                                 ;*************************************************************************
+                                 ;* A P P L I C A T I O N   N O T E   F O R   T H E   A V R   F A M I L Y
+                                 ;* 
+                                 ;* Number            : AVR000
+                                 ;* File Name         : "m16def.inc"
+                                 ;* Title             : Register/Bit Definitions for the ATmega16
+                                 ;* Date              : 2011-02-09
+                                 ;* Version           : 2.35
+                                 ;* Support E-mail    : avr@atmel.com
+                                 ;* Target MCU        : ATmega16
+                                 ;* 
+                                 ;* DESCRIPTION
+                                 ;* When including this file in the assembly program file, all I/O register 
+                                 ;* names and I/O register bit names appearing in the data book can be used.
+                                 ;* In addition, the six registers forming the three data pointers X, Y and 
+                                 ;* Z have been assigned names XL - ZH. Highest RAM address for Internal 
+                                 ;* SRAM is also defined 
+                                 ;* 
+                                 ;* The Register names are represented by their hexadecimal address.
+                                 ;* 
+                                 ;* The Register Bit names are represented by their bit number (0-7).
+                                 ;* 
+                                 ;* Please observe the difference in using the bit names with instructions
+                                 ;* such as "sbr"/"cbr" (set/clear bit in register) and "sbrs"/"sbrc"
+                                 ;* (skip if bit in register set/cleared). The following example illustrates
+                                 ;* this:
+                                 ;* 
+                                 ;* in    r16,PORTB             ;read PORTB latch
+                                 ;* sbr   r16,(1<<PB6)+(1<<PB5) ;set PB6 and PB5 (use masks, not bit#)
+                                 ;* out   PORTB,r16             ;output to PORTB
+                                 ;* 
+                                 ;* in    r16,TIFR              ;read the Timer Interrupt Flag Register
+                                 ;* sbrc  r16,TOV0              ;test the overflow flag (use bit#)
+                                 ;* rjmp  TOV0_is_set           ;jump if set
+                                 ;* ...                         ;otherwise do something else
+                                 ;*************************************************************************
                                  
+                                 #ifndef _M16DEF_INC_
+                                 
+                                 #endif  /* _M16DEF_INC_ */
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 init:
+000000 ef0f                      	ldi R16, 0xff
+000001 bb0a                      	out DDRA, R16
+                                 
+                                 main:
                                  	
-                                     
-                                     
-                                     
-                                 ;      start:
+000002 ef0f                      	ldi R16,0b11111111
+000003 bb0b                      	out PORTA,R16
+000004 9ad8                      	sbi PORTA, 0
+000005 9adf                      	sbi PORTA, 7
+                                 
+                                 ende:
+000006 940c 0006                 	jmp ende
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 ;
+                                 ; Lauflicht.asm
+                                 ;
+                                 ; Created: 16.03.2021 14:28:38
+                                 ; Author : Simon
+                                 ;
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 initialisierung:
+000008 e004                      	ldi r16, high(RAMEND);
+000009 bf0e                      	out SPH, r16;
+00000a e50f                      	ldi r16, low(RAMEND);
+00000b bf0d                      	out SPL, r16;
+00000c e010                      	ldi R17,00;
+00000d e09a                      	ldi R25, 0x0a
+                                 
+                                 ; Replace with your application code
+                                 
+                                 ; START einfacher Ablauf
+                                 ;start:
                                  ;    ldi R24, 0xff
-                                 ;   out DDRA, R24
-                                 ;init:
-                                 ;    ldi R16, 0b00000001
-                                 ;    
+                                 ;	out DDRA, R24
+                                 ;	ldi R16, 0b00000001
+                                 ;	ldi R17, 0b00000010
+                                 ;	ldi R18, 0b00000100
+                                 ;	ldi R19, 0b00001000
+                                 ;	ldi R20, 0b00010000 
+                                 ;	ldi R21, 0b00100000
+                                 ;	ldi R22, 0b01000000
+                                 ;	ldi R23, 0b10000000 
+                                 ;
                                  ;loop:
-                                 ;    cpi R16, 0b00000000
-                                 ;    breq init
-                                 ;    out PORTA, R16
-                                 ;    add R16, R16
-                                 ;    
+                                 ;	out PORTA, R16
+                                 ;	out PORTA, R17
+                                 ;	out PORTA, R18
+                                 ;	out PORTA, R19
+                                 ;	out PORTA, R20
+                                 ;	out PORTA, R21
+                                 ;	out PORTA, R22
+                                 ;	out PORTA, R23
+                                 ;	
+                                 ;    jmp loop
+                                 
+                                 ; ENDE einfacher Ablauf
+                                 
+                                 
+                                 ; START Ablauf mit Bedingung
+                                 /*start:
+                                     ldi R24, 0xff
+                                 	out DDRA, R24
+                                 
+                                 init:
+                                 	ldi R16, 0b00000001
+                                 
+                                 loop:
+                                 	cpi R16, 0b00000000
+                                 		breq init
+                                 	out PORTA, R16
+                                 	add R16, R16
+                                 	call delay100ms
+                                     jmp loop*/
+                                 
+                                 
+                                 ; ENDE Ablauf mit Bedingung
+                                 
+                                 
+                                 ; START Ablauf mit sbi und cbi
+                                 /*
+                                 init:
+                                 	ldi R16,0xff
+                                 	out DDRA,R16
+                                 
+                                 main:
+                                 	sbi PORTA,0
+                                 	call delay100ms
+                                 	cbi PORTA,0
+                                 	
+                                 
+                                 	sbi PORTA,1
+                                 	call delay100ms
+                                 	cbi PORTA,1
+                                 	
+                                  
+                                 	sbi PORTA,2
+                                 	call delay100ms
+                                 	cbi PORTA,2
+                                 	
+                                 
+                                 	sbi PORTA,3
+                                 	call delay100ms
+                                 	cbi PORTA,3
+                                  
+                                 	sbi PORTA,4
+                                 	call delay100ms
+                                 	cbi PORTA,4
+                                  
+                                 	sbi PORTA,5
+                                 	call delay100ms
+                                 	cbi PORTA,5
+                                  
+                                 	sbi PORTA,6
+                                 	call delay100ms
+                                 	cbi PORTA,6
+                                  
+                                 	sbi PORTA,7
+                                 	call delay100ms
+                                 	cbi PORTA,7
+                                  
+                                 rjmp main*/
+                                 
+                                 ; ENDE Ablauf sbi und cbi
+                                 
+                                 
+                                 .INCLUDE "Delay100msTimesR25.asm"
+                                 
+                                 ; Delay100msTimesR25.asm
+                                 ;
+                                 ; Created: 12.08.2018 11:45:08
+                                 ; Author : gu
+                                 ;
+                                 
+                                 
+                                 ; Delay 100 ms x r25
+00000e 930f                      delay100ms:		push r16
+00000f b70f                      				in r16, SREG
+000010 930f                      				push r16
+000011 93af                      				push XL			;Register retten
+000012 93bf                      				push XH
+000013 939f                      				push r25
+                                 
+000014 2399                      				tst r25			;Null abfangen, Default-Wert laden
+000015 f409                      				brne delay100ms_1
+000016 e09a                      				ldi r25, 0x0a	;10 *100 ms = 1 s
+                                 
+000017 e1a0                      delay100ms_1:	ldi XL, 0x10
+000018 e2b7                      				ldi XH, 0x27
+                                 
+000019 0000                      delay100ms_11:	nop				; 1 Takt
+00001a 0000                      				nop
+00001b 0000                      				nop
+00001c 0000                      				nop
+00001d 0000                      				nop
+00001e 0000                      				nop
+00001f 9711                      				sbiw XL, 1		; 2 Takte, Subtrahieren um 1
+000020 f7c1                      				brne delay100ms_11		; 2 Takte wenn wahr: Wenn nicht 0, dann weiter abwärtszählen, sonst 1 Takt
+                                 
+000021 959a                      				dec r25
+000022 f7a1                      				brne delay100ms_1
+                                 
+000023 919f                      				pop r25
+000024 91bf                      				pop XH
+000025 91af                      				pop XL
+000026 910f                      				pop r16
+000027 bf0f                      				out SREG, r16
+000028 910f                      				pop r16
 
 
 RESOURCE USE INFORMATION
@@ -934,37 +1123,37 @@ counted separately from r26..r31 here.
 "ATmega16" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   2 r17:   2 r18:   2 r19:   2 r20:   2 
-r21:   2 r22:   2 r23:   2 r24:   2 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:  14 r17:   1 r18:   0 r19:   0 r20:   0 
+r21:   0 r22:   0 r23:   0 r24:   0 r25:   6 r26:   4 r27:   3 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 9 out of 35 (25.7%)
+Registers used: 5 out of 35 (14.3%)
 
 "ATmega16" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
 andi  :   0 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
 brcc  :   0 brcs  :   0 break :   0 breq  :   0 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   0 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brne  :   3 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
 brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   0 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   0 inc   :   0 jmp   :   1 
+cpi   :   0 cpse  :   0 dec   :   1 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   1 inc   :   0 jmp   :   1 
 ld    :   0 ldd   :   0 ldi   :   9 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   9 pop   :   0 
-push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   0 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
-sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
+neg   :   0 nop   :   6 or    :   0 ori   :   0 out   :   5 pop   :   5 
+push  :   5 rcall :   0 ret   :   1 reti  :   0 rjmp  :   0 rol   :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   2 sbic  :   0 sbis  :   0 
+sbiw  :   1 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
-sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 3 out of 113 (2.7%)
+sub   :   0 subi  :   0 swap  :   0 tst   :   1 wdr   :   0 
+Instructions used: 13 out of 113 (11.5%)
 
 "ATmega16" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000028     40      0     40   16384   0.2%
+[.cseg] 0x000000 0x000054     84      0     84   16384   0.5%
 [.dseg] 0x000060 0x000060      0      0      0    1024   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

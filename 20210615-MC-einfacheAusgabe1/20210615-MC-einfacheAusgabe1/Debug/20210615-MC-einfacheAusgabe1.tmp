@@ -1,0 +1,34 @@
+<ASSEMBLER_INFO>
+ <VERSION>2.2.8</VERSION>
+ <DEVICE>"ATmega16"</DEVICE>
+ <WORKING_DIR>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\Debug</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc</DIR>
+  <DIR>C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avrassembler\Include</DIR>
+  <DIR></DIR>
+ </INCLUDE_PATH>
+ <SOURCE_FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm</SOURCE_FILE>
+ <INCLUDED_FILES>
+  <FILE>C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc</FILE>
+  <FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\Delay100msTimesR25.asm</FILE>
+ </INCLUDED_FILES>
+ <OBJECT_FILES>
+  <FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\Debug\20210615-MC-einfacheAusgabe1.obj</FILE>
+ </OBJECT_FILES>
+ <HEX_FILES>
+  <FILE>20210615-MC-einfacheAusgabe1.hex</FILE>
+ </HEX_FILES>
+ <OUTPUT_FILES>
+  <FILE>20210615-MC-einfacheAusgabe1.map</FILE>
+  <FILE>20210615-MC-einfacheAusgabe1.lss</FILE>
+ </OUTPUT_FILES>
+ <LABELS>
+  <init><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm</FILE><LINE>7</LINE></init>
+  <main><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm</FILE><LINE>11</LINE></main>
+  <ende><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm</FILE><LINE>18</LINE></ende>
+  <initialisierung><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\AsmFile1.asm</FILE><LINE>42</LINE></initialisierung>
+  <delay100ms><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\Delay100msTimesR25.asm</FILE><LINE>10</LINE></delay100ms>
+  <delay100ms_1><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\Delay100msTimesR25.asm</FILE><LINE>21</LINE></delay100ms_1>
+  <delay100ms_11><FILE>C:\Users\loren\Nextcloud\GitHub\techniker_microcontroller\20210615-MC-einfacheAusgabe1\20210615-MC-einfacheAusgabe1\Delay100msTimesR25.asm</FILE><LINE>24</LINE></delay100ms_11>
+ </LABELS>
+</ASSEMBLER_INFO>
