@@ -17,6 +17,6 @@ init:
 	out PORTA,r18  ;alle ausgaenge auf 0 setzen für Betriebsbeginn
 
 start:
-	
+	;Start von der SChrankensteuerung siehe PAP Part 2.1
 
 
