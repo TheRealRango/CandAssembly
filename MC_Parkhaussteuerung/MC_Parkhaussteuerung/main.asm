@@ -15,6 +15,7 @@ PullUp:
 init:
 	ldi r18, 0b00000000
 	out PORTA,r18  ;alle ausgaenge auf 0 setzen für Betriebsbeginn
+	ldi r21, 0b00000000		;standardwert einladen in zählregister
 
 start:
 	;Start von der SChrankensteuerung siehe PAP Part 2.1
@@ -24,7 +25,9 @@ pruefungtaster:
 	andi r19, 0b10000000	;r19 maskieren auf den ersten Wert
 	cpi r19, 0b10000000		;r19 vergleichen mit hex 128 oder ob10000000
 	breq pruefungtaster		;if equal springe zu pruefungstaster
+	
 	ldi r20, 0b00010000		;wert laden in r20
+	andi r20, 0b0010000
 	out PORTA,r20			;ausgeben auf porta damit bit 4 high wird --> schranke öffnen
 	
 pruefungschranke:
@@ -39,8 +42,14 @@ pruefungschranke2:
 	cpi r19, 0b01000000		; vergleichen mit hex 64 oder 0b01000000
 	brne pruefungschranke2	;wenn es nicht passt sprunge zu pruefungsschranke2
 	
-	;ldi r20, 0b00000000
+	ldi r20, 0b00000000		;wert in r20 laden
+	andi r20, 0b00010000	;wert maskieren für nur bit4
+	out PORTA, r20			;schranke schließen
 
 	
+	inc r21					;zählregister hochzählen
+	out PORTA,r21			;auf Zählerled ausgeben
+	
+	;-----PAP 2.1 beendet --> weiter mit 2.2 & 2.3
 
 
