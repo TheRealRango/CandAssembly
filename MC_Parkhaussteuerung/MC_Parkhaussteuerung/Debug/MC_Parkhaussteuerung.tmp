@@ -26,5 +26,7 @@
   <init><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>15</LINE></init>
   <start><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>19</LINE></start>
   <pruefungtaster><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>22</LINE></pruefungtaster>
+  <pruefungschranke><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>30</LINE></pruefungschranke>
+  <pruefungschranke2><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>36</LINE></pruefungschranke2>
  </LABELS>
 </ASSEMBLER_INFO>

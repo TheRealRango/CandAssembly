@@ -37,9 +37,9 @@ pruefungschranke2:
 	in r19, PIND			
 	andi r19, 0b01000000	;maskieren bit 6
 	cpi r19, 0b01000000		; vergleichen mit hex 64 oder 0b01000000
-	brne pruefungschranke2:	;wenn es nicht passt sprunge zu pruefungsschranke2
+	brne pruefungschranke2	;wenn es nicht passt sprunge zu pruefungsschranke2
 	
-	ldi r20, 0b00000000
+	;ldi r20, 0b00000000
 
 	
 
