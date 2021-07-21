@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm Fri Jul 16 13:37:52 2021
+AVRASM ver. 2.2.8  C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm Wed Jul 21 12:12:18 2021
 
 
 EQU  SIGNATURE_000 0000001e
@@ -606,7 +606,9 @@ EQU  SPMRaddr     00000028
 EQU  INT_VECTORS_SIZE 0000002a
 CSEG PullUp       00000000
 CSEG init         00000004
-CSEG start        00000006
-CSEG pruefungtaster 00000006
-CSEG pruefungschranke 0000000c
-CSEG pruefungschranke2 00000010
+CSEG start        00000007
+CSEG pruefungtaster 00000007
+CSEG pruefungschranke 0000000e
+CSEG pruefungschranke2 00000012
+CSEG pruefungvoll 0000001b
+CSEG pruefungimmernochvoll 00000025

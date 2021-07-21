@@ -51,5 +51,35 @@ pruefungschranke2:
 	out PORTA,r21			;auf Zählerled ausgeben
 	
 	;-----PAP 2.1 beendet --> weiter mit 2.2 & 2.3
+pruefungvoll:
+	in r19, PINA
+	andi r19, 0b00001111
+	cpi r19,  15
+	brne pruefungvoll
+	
+	in r20, PINA	
+	ori r20, 0b10000000
+	out PORTA, r20
 
+	;sbi PORTA, 7 --> genau das gleiche wie zeile 60-62
+
+	in r20, PINA
+	andi r20, 0b11101111
+	out PORTA, r20
+	
+	;cbi PORTA, 5 --> genau das gleiche wie 66-68
+
+pruefungimmernochvoll:
+	in r19, PINA
+	andi r19, 0b00001111
+	cpi r19,  15
+	breq pruefungimmernochvoll
+
+	cbi PORTA, 7 ;Anzeige Belegt auf dunkel
+
+	sbi PORTA, 5 ; SChranke einfahrt öffnen
+
+jmp pruefungvoll
+
+;---------PAP 2.2 beendet
 

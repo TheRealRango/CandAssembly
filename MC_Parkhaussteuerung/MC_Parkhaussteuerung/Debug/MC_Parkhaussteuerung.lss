@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.2.8  C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm Fri Jul 16 13:37:52 2021
+AVRASM ver. 2.2.8  C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm Wed Jul 21 12:12:18 2021
 
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
 [builtin](2): Including file 'C:/Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\avrasm\inc\m16def.inc'
@@ -886,35 +886,71 @@ AVRASM ver. 2.2.8  C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\technike
                                  init:
 000004 e020                      	ldi r18, 0b00000000
 000005 bb2b                      	out PORTA,r18  ;alle ausgaenge auf 0 setzen für Betriebsbeginn
+000006 e050                      	ldi r21, 0b00000000		;standardwert einladen in zählregister
                                  
                                  start:
                                  	;Start von der SChrankensteuerung siehe PAP Part 2.1
                                  
                                  pruefungtaster:
-000006 b330                      	in r19, PIND			;PIND einlesen in r19
-000007 7830                      	andi r19, 0b10000000	;r19 maskieren auf den ersten Wert
-000008 3830                      	cpi r19, 0b10000000		;r19 vergleichen mit hex 128 oder ob10000000
-000009 f3e1                      	breq pruefungtaster		;if equal springe zu pruefungstaster
-00000a e140                      	ldi r20, 0b00010000		;wert laden in r20
-00000b bb4b                      	out PORTA,r20			;ausgeben auf porta damit bit 4 high wird --> schranke öffnen
+000007 b330                      	in r19, PIND			;PIND einlesen in r19
+000008 7830                      	andi r19, 0b10000000	;r19 maskieren auf den ersten Wert
+000009 3830                      	cpi r19, 0b10000000		;r19 vergleichen mit hex 128 oder ob10000000
+00000a f3e1                      	breq pruefungtaster		;if equal springe zu pruefungstaster
+                                 	
+00000b e140                      	ldi r20, 0b00010000		;wert laden in r20
+00000c 7140                      	andi r20, 0b0010000
+00000d bb4b                      	out PORTA,r20			;ausgeben auf porta damit bit 4 high wird --> schranke öffnen
                                  	
                                  pruefungschranke:
-00000c b330                      	in r19, PIND			;PIND einlesen in r19
-00000d 7430                      	andi r19, 0b01000000	;r19 maskieren auf den ersten Wert
-00000e 3430                      	cpi r19, 0b01000000		;r19 vergleichen mit hex 128 oder ob10000000
-00000f f3e1                      	breq pruefungschranke	;if equal springe zu pruefungsschranke
+00000e b330                      	in r19, PIND			;PIND einlesen in r19
+00000f 7430                      	andi r19, 0b01000000	;r19 maskieren auf den ersten Wert
+000010 3430                      	cpi r19, 0b01000000		;r19 vergleichen mit hex 128 oder ob10000000
+000011 f3e1                      	breq pruefungschranke	;if equal springe zu pruefungsschranke
                                  
                                  pruefungschranke2:		
-000010 b330                      	in r19, PIND			
-000011 7430                      	andi r19, 0b01000000	;maskieren bit 6
-000012 3430                      	cpi r19, 0b01000000		; vergleichen mit hex 64 oder 0b01000000
-000013 f7e1                      	brne pruefungschranke2	;wenn es nicht passt sprunge zu pruefungsschranke2
+000012 b330                      	in r19, PIND			
+000013 7430                      	andi r19, 0b01000000	;maskieren bit 6
+000014 3430                      	cpi r19, 0b01000000		; vergleichen mit hex 64 oder 0b01000000
+000015 f7e1                      	brne pruefungschranke2	;wenn es nicht passt sprunge zu pruefungsschranke2
                                  	
-                                 	;ldi r20, 0b00000000
+000016 e040                      	ldi r20, 0b00000000		;wert in r20 laden
+000017 7140                      	andi r20, 0b00010000	;wert maskieren für nur bit4
+000018 bb4b                      	out PORTA, r20			;schranke schließen
                                  
                                  	
+000019 9553                      	inc r21					;zählregister hochzählen
+00001a bb5b                      	out PORTA,r21			;auf Zählerled ausgeben
+                                 	
+                                 	;-----PAP 2.1 beendet --> weiter mit 2.2 & 2.3
+                                 pruefungvoll:
+00001b b339                      	in r19, PINA
+00001c 703f                      	andi r19, 0b00001111
+00001d 303f                      	cpi r19,  15
+00001e f7e1                      	brne pruefungvoll
+                                 	
+00001f b349                      	in r20, PINA	
+000020 6840                      	ori r20, 0b10000000
+000021 bb4b                      	out PORTA, r20
                                  
+                                 	;sbi PORTA, 7 --> genau das gleiche wie zeile 60-62
                                  
+000022 b349                      	in r20, PINA
+000023 7e4f                      	andi r20, 0b11101111
+000024 bb4b                      	out PORTA, r20
+                                 	
+                                 	;cbi PORTA, 5 --> genau das gleiche wie 66-68
+                                 
+                                 pruefungimmernochvoll:
+000025 b339                      	in r19, PINA
+000026 703f                      	andi r19, 0b00001111
+000027 303f                      	cpi r19,  15
+000028 f3e1                      	breq pruefungimmernochvoll
+                                 
+000029 98df                      	cbi PORTA, 7 ;Anzeige Belegt auf dunkel
+                                 
+00002a 9add                      	sbi PORTA, 5 ; SChranke einfahrt öffnen
+                                 
+00002b 940c 001b                 jmp pruefungvoll
 
 
 RESOURCE USE INFORMATION
@@ -934,37 +970,37 @@ counted separately from r26..r31 here.
 "ATmega16" register use summary:
 x  :   0 y  :   0 z  :   0 r0 :   0 r1 :   0 r2 :   0 r3 :   0 r4 :   0 
 r5 :   0 r6 :   0 r7 :   0 r8 :   0 r9 :   0 r10:   0 r11:   0 r12:   0 
-r13:   0 r14:   0 r15:   0 r16:   2 r17:   2 r18:   2 r19:   9 r20:   2 
-r21:   0 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
+r13:   0 r14:   0 r15:   0 r16:   2 r17:   2 r18:   2 r19:  15 r20:  12 
+r21:   3 r22:   0 r23:   0 r24:   0 r25:   0 r26:   0 r27:   0 r28:   0 
 r29:   0 r30:   0 r31:   0 
-Registers used: 5 out of 35 (14.3%)
+Registers used: 6 out of 35 (17.1%)
 
 "ATmega16" instruction use summary:
 .lds  :   0 .sts  :   0 adc   :   0 add   :   0 adiw  :   0 and   :   0 
-andi  :   3 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
-brcc  :   0 brcs  :   0 break :   0 breq  :   2 brge  :   0 brhc  :   0 
+andi  :   8 asr   :   0 bclr  :   0 bld   :   0 brbc  :   0 brbs  :   0 
+brcc  :   0 brcs  :   0 break :   0 breq  :   3 brge  :   0 brhc  :   0 
 brhs  :   0 brid  :   0 brie  :   0 brlo  :   0 brlt  :   0 brmi  :   0 
-brne  :   1 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
-brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   0 cbr   :   0 
+brne  :   2 brpl  :   0 brsh  :   0 brtc  :   0 brts  :   0 brvc  :   0 
+brvs  :   0 bset  :   0 bst   :   0 call  :   0 cbi   :   1 cbr   :   0 
 clc   :   0 clh   :   0 cli   :   0 cln   :   0 clr   :   0 cls   :   0 
 clt   :   0 clv   :   0 clz   :   0 com   :   0 cp    :   0 cpc   :   0 
-cpi   :   3 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
-fmulsu:   0 icall :   0 ijmp  :   0 in    :   3 inc   :   0 jmp   :   0 
-ld    :   0 ldd   :   0 ldi   :   4 lds   :   0 lpm   :   0 lsl   :   0 
+cpi   :   5 cpse  :   0 dec   :   0 eor   :   0 fmul  :   0 fmuls :   0 
+fmulsu:   0 icall :   0 ijmp  :   0 in    :   7 inc   :   1 jmp   :   1 
+ld    :   0 ldd   :   0 ldi   :   6 lds   :   0 lpm   :   0 lsl   :   0 
 lsr   :   0 mov   :   0 movw  :   0 mul   :   0 muls  :   0 mulsu :   0 
-neg   :   0 nop   :   0 or    :   0 ori   :   0 out   :   4 pop   :   0 
+neg   :   0 nop   :   0 or    :   0 ori   :   1 out   :   8 pop   :   0 
 push  :   0 rcall :   0 ret   :   0 reti  :   0 rjmp  :   0 rol   :   0 
-ror   :   0 sbc   :   0 sbci  :   0 sbi   :   0 sbic  :   0 sbis  :   0 
+ror   :   0 sbc   :   0 sbci  :   0 sbi   :   1 sbic  :   0 sbis  :   0 
 sbiw  :   0 sbr   :   0 sbrc  :   0 sbrs  :   0 sec   :   0 seh   :   0 
 sei   :   0 sen   :   0 ser   :   0 ses   :   0 set   :   0 sev   :   0 
 sez   :   0 sleep :   0 spm   :   0 st    :   0 std   :   0 sts   :   0 
 sub   :   0 subi  :   0 swap  :   0 tst   :   0 wdr   :   0 
-Instructions used: 7 out of 113 (6.2%)
+Instructions used: 12 out of 113 (10.6%)
 
 "ATmega16" memory use summary [bytes]:
 Segment   Begin    End      Code   Data   Used    Size   Use%
 ---------------------------------------------------------------
-[.cseg] 0x000000 0x000028     40      0     40   16384   0.2%
+[.cseg] 0x000000 0x00005a     90      0     90   16384   0.5%
 [.dseg] 0x000060 0x000060      0      0      0    1024   0.0%
 [.eseg] 0x000000 0x000000      0      0      0     512   0.0%
 

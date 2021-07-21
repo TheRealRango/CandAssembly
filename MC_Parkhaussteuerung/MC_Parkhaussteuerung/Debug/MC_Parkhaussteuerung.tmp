@@ -24,9 +24,11 @@
  <LABELS>
   <PullUp><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>10</LINE></PullUp>
   <init><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>15</LINE></init>
-  <start><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>19</LINE></start>
-  <pruefungtaster><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>22</LINE></pruefungtaster>
-  <pruefungschranke><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>30</LINE></pruefungschranke>
-  <pruefungschranke2><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>36</LINE></pruefungschranke2>
+  <start><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>20</LINE></start>
+  <pruefungtaster><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>23</LINE></pruefungtaster>
+  <pruefungschranke><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>33</LINE></pruefungschranke>
+  <pruefungschranke2><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>39</LINE></pruefungschranke2>
+  <pruefungvoll><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>54</LINE></pruefungvoll>
+  <pruefungimmernochvoll><FILE>C:\Users\loren\OneDrive - it.schule stuttgart\GitHub\techniker_microcontroller\MC_Parkhaussteuerung\MC_Parkhaussteuerung\main.asm</FILE><LINE>72</LINE></pruefungimmernochvoll>
  </LABELS>
 </ASSEMBLER_INFO>
