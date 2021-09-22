@@ -3,27 +3,27 @@
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000088  00000000  00000000  00000054  2**1
+  0 .text         0000009a  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  000000dc  2**0
+  1 .data         00000002  00800060  0000009a  0000010e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  000000dc  2**0
+  2 .comment      00000030  00000000  00000000  00000110  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000010c  2**2
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000140  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000020  00000000  00000000  00000148  2**0
+  4 .debug_aranges 00000020  00000000  00000000  0000017c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000005bd  00000000  00000000  00000168  2**0
+  5 .debug_info   000005bd  00000000  00000000  0000019c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000541  00000000  00000000  00000725  2**0
+  6 .debug_abbrev 00000541  00000000  00000000  00000759  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000014f  00000000  00000000  00000c66  2**0
+  7 .debug_line   00000159  00000000  00000000  00000c9a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000024  00000000  00000000  00000db8  2**2
+  8 .debug_frame  00000024  00000000  00000000  00000df4  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000334  00000000  00000000  00000ddc  2**0
+  9 .debug_str    00000334  00000000  00000000  00000e18  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000010  00000000  00000000  00001110  2**0
+ 10 .debug_ranges 00000010  00000000  00000000  0000114c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -63,31 +63,36 @@ Disassembly of section .text:
   60:	10 e0       	ldi	r17, 0x00	; 0
   62:	a0 e6       	ldi	r26, 0x60	; 96
   64:	b0 e0       	ldi	r27, 0x00	; 0
-  66:	e8 e8       	ldi	r30, 0x88	; 136
+  66:	ea e9       	ldi	r30, 0x9A	; 154
   68:	f0 e0       	ldi	r31, 0x00	; 0
   6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
   6c:	05 90       	lpm	r0, Z+
   6e:	0d 92       	st	X+, r0
-  70:	a0 36       	cpi	r26, 0x60	; 96
+  70:	a2 36       	cpi	r26, 0x62	; 98
   72:	b1 07       	cpc	r27, r17
   74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
   76:	0e 94 41 00 	call	0x82	; 0x82 <main>
-  7a:	0c 94 42 00 	jmp	0x84	; 0x84 <_exit>
+  7a:	0c 94 4b 00 	jmp	0x96	; 0x96 <_exit>
 
 0000007e <__bad_interrupt>:
   7e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000082 <main>:
-
-int main(void)			//Hauptfunktion -> hier wird als erstes gesprungen
-						//main -> Name der Funktion
-						//rückgabe wert ist int
-						//void --> erwartet keine übergabe Parameter
 {
-  82:	ff cf       	rjmp	.-2      	; 0x82 <main>
+	/* Replace with your application code */
+	while (1)			//eins ist boolean und steht für true Endlosschleife --> weil die Abbruchbedingung nie erreicht wird.
+						//alle werte sind außer 0, false wahr!
+	{
+		variable_a++;	//variable_a wird hochgezählt
+  82:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+  86:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  8a:	01 96       	adiw	r24, 0x01	; 1
+  8c:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+  90:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+  94:	f6 cf       	rjmp	.-20     	; 0x82 <main>
 
-00000084 <_exit>:
-  84:	f8 94       	cli
+00000096 <_exit>:
+  96:	f8 94       	cli
 
-00000086 <__stop_program>:
-  86:	ff cf       	rjmp	.-2      	; 0x86 <__stop_program>
+00000098 <__stop_program>:
+  98:	ff cf       	rjmp	.-2      	; 0x98 <__stop_program>

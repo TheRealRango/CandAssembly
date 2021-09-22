@@ -23,6 +23,7 @@ int main(void)			//Hauptfunktion -> hier wird als erstes gesprungen
 	while (1)			//eins ist boolean und steht f¸r true Endlosschleife --> weil die Abbruchbedingung nie erreicht wird.
 						//alle werte sind auﬂer 0, false wahr!
 	{
+		variable_a++;	//variable_a wird hochgez‰hlt
 	}
 }
 
