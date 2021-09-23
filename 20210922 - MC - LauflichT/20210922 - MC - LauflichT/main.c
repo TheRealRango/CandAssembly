@@ -10,8 +10,7 @@
 
 void delay(void)
 {
-	_delay_ms(500);	
-	
+	_delay_ms(500);
 }
 
 void blink(void)
@@ -37,10 +36,7 @@ int main(void)
 {
 	
 	DDRA = 0xFF;	//set PORTB als output
-	
-	PORTA = 0x00;	//alle LEDS aus	
-	
-	/* Replace with your application code */
+
 	while (1)
 	{
 		blink();
