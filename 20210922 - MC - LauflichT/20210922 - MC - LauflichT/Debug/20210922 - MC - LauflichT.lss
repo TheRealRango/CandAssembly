@@ -3,11 +3,11 @@
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000000d8  00000000  00000000  00000054  2**1
+  0 .text         000000d6  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00800060  0000012c  2**0
+  1 .data         00000000  00800060  00800060  0000012a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000030  00000000  00000000  0000012c  2**0
+  2 .comment      00000030  00000000  00000000  0000012a  2**0
                   CONTENTS, READONLY
   3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  0000015c  2**2
                   CONTENTS, READONLY
@@ -17,15 +17,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   6 .debug_abbrev 000005f1  00000000  00000000  000008a5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000002ce  00000000  00000000  00000e96  2**0
+  7 .debug_line   000002c8  00000000  00000000  00000e96  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000060  00000000  00000000  00001164  2**2
+  8 .debug_frame  00000060  00000000  00000000  00001160  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    00000390  00000000  00000000  000011c4  2**0
+  9 .debug_str    00000390  00000000  00000000  000011c0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000009b  00000000  00000000  00001554  2**0
+ 10 .debug_loc    0000009b  00000000  00000000  00001550  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000028  00000000  00000000  000015ef  2**0
+ 11 .debug_ranges 00000028  00000000  00000000  000015eb  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -61,7 +61,7 @@ Disassembly of section .text:
   5c:	de bf       	out	0x3e, r29	; 62
   5e:	cd bf       	out	0x3d, r28	; 61
   60:	0e 94 62 00 	call	0xc4	; 0xc4 <main>
-  64:	0c 94 6a 00 	jmp	0xd4	; 0xd4 <_exit>
+  64:	0c 94 69 00 	jmp	0xd2	; 0xd2 <_exit>
 
 00000068 <__bad_interrupt>:
   68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -85,7 +85,7 @@ Disassembly of section .text:
   7e:	08 95       	ret
 
 00000080 <blink>:
-	
+	_delay_ms(500);
 }
 
 void blink(void)
@@ -96,12 +96,9 @@ void blink(void)
   84:	1b ba       	out	0x1b, r1	; 27
 	delay();
   86:	0e 94 36 00 	call	0x6c	; 0x6c <delay>
-	
-	
 	PORTA = 0xff;
   8a:	8f ef       	ldi	r24, 0xFF	; 255
   8c:	8b bb       	out	0x1b, r24	; 27
-	
 	delay();
   8e:	0e 94 36 00 	call	0x6c	; 0x6c <delay>
   92:	08 95       	ret
@@ -153,29 +150,24 @@ void lauflicht(void)
   c2:	08 95       	ret
 
 000000c4 <main>:
-	
+
 int main(void)
 {
-	//DDRA = 0x00;	//set PORTA als input
+	
 	DDRA = 0xFF;	//set PORTB als output
   c4:	8f ef       	ldi	r24, 0xFF	; 255
   c6:	8a bb       	out	0x1a, r24	; 26
-	
-	PORTA = 0x00;	//alle LEDS aus
-  c8:	1b ba       	out	0x1b, r1	; 27
-	
-	
-	/* Replace with your application code */
+
 	while (1)
 	{
 		blink();
-  ca:	0e 94 40 00 	call	0x80	; 0x80 <blink>
+  c8:	0e 94 40 00 	call	0x80	; 0x80 <blink>
 		lauflicht();
-  ce:	0e 94 4a 00 	call	0x94	; 0x94 <lauflicht>
-  d2:	fb cf       	rjmp	.-10     	; 0xca <main+0x6>
+  cc:	0e 94 4a 00 	call	0x94	; 0x94 <lauflicht>
+  d0:	fb cf       	rjmp	.-10     	; 0xc8 <main+0x4>
 
-000000d4 <_exit>:
-  d4:	f8 94       	cli
+000000d2 <_exit>:
+  d2:	f8 94       	cli
 
-000000d6 <__stop_program>:
-  d6:	ff cf       	rjmp	.-2      	; 0xd6 <__stop_program>
+000000d4 <__stop_program>:
+  d4:	ff cf       	rjmp	.-2      	; 0xd4 <__stop_program>
