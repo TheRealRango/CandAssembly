@@ -1,0 +1,8 @@
+Bei der zweiten KA werden eher so die Rückseite bzw Aufgaben 4-5 dran kommen
+Eher programmieraufgaben und SourceCode-Inspections
+
+Delays sind schlechter stil und sollten nicht verwendet werden
+
+Ziel:
+Weg von Funktionen oder auch Verzweigungen
+Hin zu Timer
